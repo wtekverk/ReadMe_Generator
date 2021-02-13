@@ -70,9 +70,9 @@ inquirer.prompt([
 ]).then((response) => {
 
 
-const fileName = `README.md`;
+    const fileName = `README.md`;
 
-fs.writeFile(fileName, `
+    fs.writeFile(fileName, `
 # ${response.Title}
 
 ## Description
@@ -115,15 +115,17 @@ Email: (https://${response.Email})
 
 
 `, (err, data) => {
-    if(err) {console.log(err)}else{console.log('Great Job!')}
-})
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('Great Job!')
+        }
+    })
 
 
 
 })
 
-// WHEN I enter my project title
-// THEN this is displayed as the title of the README
 
 
 // WHEN I choose a license for my application from a list of options
@@ -132,22 +134,3 @@ Email: (https://${response.Email})
 
 // WHEN I click on the links in the Table of Contents
 // THEN I am taken to the corresponding section of the README
-
-
-
-    // WHEN I enter my GitHub username
-    // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-
-    // WHEN I enter my email address
-    // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-
-
-
-// WHEN I am prompted for information about my application repository
-// THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-
-
-
-
-
-// Function call to initialize app
