@@ -73,6 +73,37 @@ inquirer.prompt([
 const fileName = `README.md`;
 
 fs.writeFile(fileName, `
+# ${response.Title}
+
+## Description
+${response.Description}
+
+
+## Table of Contents 
+
+
+## Installation
+${response.Installation}
+
+
+## Usage
+${response.Usage}
+
+
+## License
+
+
+## Contributing
+${response.Contributing}
+
+## Tests
+${response.Tests}
+
+
+## Questions
+GitHub: (https://${response.GitHub})
+Email: (https://${response.Email})
+
 
 
 
