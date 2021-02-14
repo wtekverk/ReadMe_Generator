@@ -2,6 +2,8 @@ const fs = require('fs')
 
 const inquirer = require('inquirer')
 
+const generateMarkdown = require('./utils/generateMarkdown')
+
 inquirer.prompt([
 
     {
@@ -41,11 +43,11 @@ inquirer.prompt([
     },
 
     {
-        type: 'checkbox',
+        type: 'list',
         message: 'Choose a license.',
         name: 'License',
         choices: [
-            'MIT', 'GNU GPLv3', 'Apache 2.0'
+            'MIT', 'GNU GPLv3', 'Apache 2.0', 'none'
         ]
     },
 
@@ -68,81 +70,25 @@ inquirer.prompt([
 ]).then((response) => {
 
 
+
+
     const fileName = `README.md`;
 
-    fs.writeFile(fileName, `
-# ${response.Title}
-
-## Description
-${response.Description}
-
-
-## Table of Contents 
-
-[Description](##Description)
-
-[Installation](##Installation)
-
-[Usage](##Usage)
-
-[License](##License)
-
-[Contributing](##Contributing)
-
-[Tests](##Tests)
-
-[Questions](##Questions)
-
-
-## Installation
-${response.Installation}
-
-
-## Usage
-${response.Usage}
-
-
-## License
-
-
-## Contributing
-${response.Contributing}
-
-## Tests
-${response.Tests}
-
-
-## Questions
-GitHub: (https://${response.GitHub})
-Email: (https://${response.Email})
-
-
-
-
-
-
-
-
-
-
-
-`, (err, data) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log('Great Job!')
+    fs.writeFile(fileName, generateMarkdown(response), (err, data) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log('Great Job!')
+            }
         }
-    })
+
+    )
 
 
 
+}).catch(function (err) {
+    if (err) {
+        console.log("I'm so sad an error occurred. Me broken :(")
+        console.log(err);
+    }
 })
-
-
-
-// WHEN I choose a license for my application from a list of options
-// THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
-
-
-// WHEN I click on the links in the Table of Contents
-// THEN I am taken to the corresponding section of the README
