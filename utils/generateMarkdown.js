@@ -95,7 +95,7 @@ function generateMarkdown(response) {
   
   ## Questions
   GitHub: (https://${response.GitHub})
-  Email: (https://${response.Email})
+  Email: (${response.Email})
   
   
   
